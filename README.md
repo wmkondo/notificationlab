@@ -11,7 +11,7 @@ O objetivo é:
 3. o client-target que receber a notificação deverá incrementar um contador
 
 ### Source Code
-`git clone https://github.com/wmkondo/notificationlab.git`
+`git clone "https://github.com/wmkondo/notificationlab.git"`
 
 ### Dependências (instalação do server com Vagrant)
 **Vagrant**
