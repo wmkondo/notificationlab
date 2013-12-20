@@ -1,0 +1,58 @@
+<html>
+	<head>
+        <title>Lab- POC: Node.js & Socket.io</title>
+       	<style>
+			#board{
+                height: 80px;
+			}
+	   </style>
+    </head>
+	<body>
+            <h1>Notification Board</h1>
+			<div id="board">
+                        1-target:<span id="1-target">0</span><br />
+                        2-target:<span id="2-target">0</span><br />
+                        3-target:<span id="3-target">0</span><br />
+            </div>
+            
+			<form id="notify-form">
+				<select id="target">
+                        <option value="1-target">1-target</option>
+                        <option value="2-target">2-target</option>
+                        <option value="3-target">3-target</option>
+                </select>
+				<input type="submit" />
+			</form>	
+			
+			<script src="http://code.jquery.com/jquery-latest.min.js" ></script>	
+			<script src="http://172.16.0.60:3000/socket.io/socket.io.js" ></script>	
+				
+			<script>
+				jQuery(function($){
+                    
+						var socket = io.connect('http://172.16.0.60:3000');
+                    
+						var $notifyForm = $('#notify-form');
+						var $target  = $('#target');
+						
+						$notifyForm.submit(function(){
+								event.preventDefault();
+								
+								var targetVal = $target.val();
+								
+								socket.emit('notify', targetVal);
+							});
+						
+						socket.on('1-target', function(data) {
+                                $('#1-target').text(parseInt($('#1-target').text())+1);
+							});
+						socket.on('2-target', function(data) {
+                                $('#2-target').text(parseInt($('#2-target').text())+1);
+							});
+						socket.on('3-target', function(data) {
+                                $('#3-target').text(parseInt($('#3-target').text())+1);
+							});
+					});
+			</script>	
+	</body>
+</html>
