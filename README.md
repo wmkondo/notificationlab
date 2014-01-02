@@ -2,7 +2,7 @@
 
 ### Sobre
 
-Estudo de utilização do Node.js com o Socket.io para atualização eventos no client a partir do server, substituindo implementação com "pooling".
+Estudo de utilização do Node.js com o Socket.io para atualização eventos no client a partir do server, substituindo implementação com "polling".
 
 O objetivo é:
 
